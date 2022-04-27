@@ -2,32 +2,32 @@
 
 namespace App\Models;
 
-use App\Models\Traits\modelRondomOrder;
+use App\Traits\ModelRondomOrder;
 use Database\Factories\CarFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Car extends Model
 {
-    use HasFactory, modelRondomOrder;
+    use HasFactory, ModelRondomOrder;
 
     protected $fillable = [
         'id', 'car_number', 'car_make_year', 'user_id', 'model_id', 'brand_id'
     ];
 
-    public function model()
+    public function carModel()
     {
-        return $this->hasMany(Model::class, 'model_id', 'id');
+        return $this->belongsTo(CarModel::class, 'model_id', 'id');
     }
 
     public function brand()
     {
-        return $this->hasMany(Brand::class, 'brand_id', 'id');
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
 
     public function user()
     {
-        return $this->hasOne(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     protected static function newFactory()

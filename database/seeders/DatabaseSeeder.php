@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //try php artisan db:seed
 
         if (empty(\App\Models\Brand::count())) {
             \App\Models\Brand::factory()->count(10)->create();
@@ -31,7 +32,5 @@ class DatabaseSeeder extends Seeder
             if (empty(\App\Models\Car::count()))
                 \App\Models\Car::factory()->count(30)->create();
         }
-
-        //try php artisan db:seed
     }
 }

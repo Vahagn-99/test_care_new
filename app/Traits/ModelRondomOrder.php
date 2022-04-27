@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\Traits;
+namespace App\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-trait modelRondomOrder
+trait ModelRondomOrder
 {
     /**
      * Get a random item instance for the model.

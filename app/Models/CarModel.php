@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use App\Models\Traits\modelRondomOrder;
+use App\Traits\ModelRondomOrder;
 use Database\Factories\CarModelFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CarModel extends Model
 {
-    use HasFactory, modelRondomOrder;
+    use HasFactory, ModelRondomOrder;
 
     protected $fillable = [
         'id', 'name'
@@ -17,7 +17,7 @@ class CarModel extends Model
 
     public function cars()
     {
-        return $this->belongsTo(Cars::class, 'id', 'model_id');
+        return $this->hasMany(Cars::class, 'model_id', 'id');
     }
 
     protected static function newFactory()

@@ -19,7 +19,7 @@ class CreateCarsTable extends Migration
             $table->integer('car_make_year')->comment('год выпуска машины');
             $table->foreignIdFor(App\Models\CarModel::class, 'model_id')->onDelete('cascade');
             $table->foreignIdFor(App\Models\Brand::class, 'brand_id')->onDelete('cascade');
-            $table->foreignIdFor(App\Models\User::class, 'user_id')->onDelete('cascade');
+            $table->foreignIdFor(App\Models\User::class, 'user_id')->onDelete('cascade')->nullable();
             $table->timestamps();
         });
     }

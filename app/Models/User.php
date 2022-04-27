@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Traits\modelRondomOrder;
+use App\Traits\ModelRondomOrder;
 use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, modelRondomOrder;
+    use HasApiTokens, HasFactory, Notifiable, ModelRondomOrder;
 
     /**
      * The attributes that are mass assignable.
@@ -47,5 +47,10 @@ class User extends Authenticatable
     protected static function newFactory()
     {
         return new UserFactory();
+    }
+
+    public function car()
+    {
+        return $this->belongsTo(Car::class, 'user_id', 'id');
     }
 }
