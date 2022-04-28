@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
 
 Route::prefix('v1')->group(function () {
     Route::apiResource('car', \App\Http\Controllers\Api\V1\UseCarController::class);
-    Route::post('car/add_car_for_user/{carId}', [\App\Http\Controllers\Api\V1\DispatcherController::class, 'rentCar'])->name('car.rentCar');
+    Route::post('car/add_car_for_user/{carId}', [\App\Http\Controllers\Api\V1\DispatcherController::class, 'rentCar'])->name('dispatcher.rentCar');
+    Route::post('car/add_user', [\App\Http\Controllers\Api\V1\DispatcherController::class, 'addUser'])->name('dispatcher.addUser');
+    Route::get('/logout', [\App\Http\Controllers\Api\AuthController::class, 'logout']);
 });

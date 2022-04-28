@@ -14,7 +14,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, ModelRondomOrder;
 
-    /**
+    /**$user->createToken($request->device_name)->plainTextToken;
+
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
